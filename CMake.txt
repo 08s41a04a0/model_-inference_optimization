@@ -1,0 +1,11 @@
+@'
+cmake_minimum_required(VERSION 3.10)
+project(EdgeVisionInference)
+set(CMAKE_CXX_STANDARD 17)
+find_package(OpenCV REQUIRED)
+set(ONNXRUNTIME_DIR "C:/path/to/onnxruntime")
+include_directories(${ONNXRUNTIME_DIR}/include)
+link_directories(${ONNXRUNTIME_DIR}/lib)
+add_executable(inference_engine main.cpp EdgeInferenceEngine.cpp)
+target_link_libraries(inference_engine ${OpenCV_LIBS} onnxruntime)
+'@ | Out-File -FilePath CMakeLists.txt -Encoding utf8
